@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">AtividadeAvaliativa1</string>
+    <string name="Texto_Tela_Principal">Vacina Sim - POA</string>
+    <string name="Image_Logo">Logo</string>
+    <string name="Btn_GetStart">Entrar</string>
+    <string name="Btn_Login">Login</string>
+    <string name="Btn_BackSplash">Retornar Splash</string>
+    <string name="Btn_BackLogin">Retornar Login</string>
+    <string name="Login">Cpf</string>
+    <string name="Senha">Senha</string>
+    <string name="BoasVindas">Bem vindo ao aplicativo de consulta pontos de vacinação da Covid-19</string>
+    <string name="CpfUsuario">Usuário logado:</string>
+</resources>
