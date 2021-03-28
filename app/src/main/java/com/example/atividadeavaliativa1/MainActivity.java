@@ -17,5 +17,6 @@ public class MainActivity extends AppCompatActivity {
     public void OpenLogin(View view){
         Intent intent = new Intent(this,LoginActivity.class);
         startActivity(intent);
+
     }
 }

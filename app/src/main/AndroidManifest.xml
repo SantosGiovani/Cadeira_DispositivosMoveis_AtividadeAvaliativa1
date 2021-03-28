@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.atividadeavaliativa1">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,14 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AtividadeAvaliativa1">
+
         <activity
-            android:name=".BoasVindasActivity"
-            android:parentActivityName=".LoginActivity">
-        </activity>
+            android:name=".DetalheItemLisActivity"
+            android:parentActivityName=".SelectListApiActivity"/>
+        <activity android:name=".ListApiRestActivity"
+            android:parentActivityName=".SelectListApiActivity" />
+        <activity
+            android:name=".SelectListApiActivity"
+            android:parentActivityName=".LoginActivity" />
         <activity
             android:name=".LoginActivity"
-            android:parentActivityName=".MainActivity">
-        </activity>
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

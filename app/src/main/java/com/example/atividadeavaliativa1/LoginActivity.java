@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
-
 public class LoginActivity extends AppCompatActivity {
 
     @Override
@@ -25,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
         String Senha = CampoSenha.getText().toString();
 
         if (!Cpf.equals("") && !Senha.equals("") && Cpf.equals(Senha)){
-            Intent intent = new Intent(this,BoasVindasActivity.class);
+            Intent intent = new Intent(this, SelectListApiActivity.class);
             intent.putExtra("UsuarioLogado",Cpf);
             startActivity(intent);
         }
@@ -34,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
     }
-    private void alert(String msg){
+    public void alert(String msg){
         Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
     }
 }
