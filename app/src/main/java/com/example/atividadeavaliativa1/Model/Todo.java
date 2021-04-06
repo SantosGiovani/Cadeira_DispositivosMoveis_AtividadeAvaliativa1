@@ -1,4 +1,4 @@
-package com.example.atividadeavaliativa1;
+package com.example.atividadeavaliativa1.Model;
 
 import android.os.Build;
 import android.os.Parcel;
@@ -6,34 +6,37 @@ import android.os.Parcelable;
 
 import androidx.annotation.RequiresApi;
 
-public class Album implements Parcelable {
+public class Todo implements Parcelable {
     private int userId;
     private int id;
     private String title;
+    private boolean completed;
 
-    public Album(int userId, int id, String title){
+    public Todo(int userId, int id, String title, boolean completed) {
         this.userId = userId;
         this.id = id;
         this.title = title;
+        this.completed = completed;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
-    private Album(Parcel parcel) {
+    private Todo(Parcel parcel) {
         this.userId = parcel.readInt();
         this.id = parcel.readInt();
         this.title = parcel.readString();
+        this.completed = parcel.readBoolean();
     }
 
-    public static final Parcelable.Creator<Album> CREATOR = new Parcelable.Creator<Album>() {
+    public static final Parcelable.Creator<Todo> CREATOR = new Parcelable.Creator<Todo>() {
         @RequiresApi(api = Build.VERSION_CODES.Q)
         @Override
-        public Album createFromParcel(Parcel in) {
-            return new Album(in);
+        public Todo createFromParcel(Parcel in) {
+            return new Todo(in);
         }
 
         @Override
-        public Album[] newArray(int size) {
-            return new Album[size];
+        public Todo[] newArray(int size) {
+            return new Todo[size];
         }
     };
 
@@ -61,15 +64,27 @@ public class Album implements Parcelable {
         this.title = title;
     }
 
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
     @Override
     public int describeContents() {
         return 0;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.userId);
         dest.writeInt(this.id);
         dest.writeString(this.title);
+        dest.writeBoolean(this.completed);
     }
+
+
 }

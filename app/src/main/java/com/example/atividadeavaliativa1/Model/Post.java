@@ -1,4 +1,4 @@
-package com.example.atividadeavaliativa1;
+package com.example.atividadeavaliativa1.Model;
 
 import android.os.Build;
 import android.os.Parcel;
@@ -6,37 +6,37 @@ import android.os.Parcelable;
 
 import androidx.annotation.RequiresApi;
 
-public class Todo implements Parcelable {
+public class Post implements Parcelable {
     private int userId;
     private int id;
     private String title;
-    private boolean completed;
+    private String body;
 
-    public Todo(int userId, int id, String title, boolean completed) {
+    public Post(int userId, int id, String title){
         this.userId = userId;
         this.id = id;
         this.title = title;
-        this.completed = completed;
+        this.body = body;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
-    private Todo(Parcel parcel) {
+    private Post(Parcel parcel) {
         this.userId = parcel.readInt();
         this.id = parcel.readInt();
         this.title = parcel.readString();
-        this.completed = parcel.readBoolean();
+        this.body = parcel.readString();
     }
 
-    public static final Parcelable.Creator<Todo> CREATOR = new Parcelable.Creator<Todo>() {
+    public static final Parcelable.Creator<Post> CREATOR = new Parcelable.Creator<Post>() {
         @RequiresApi(api = Build.VERSION_CODES.Q)
         @Override
-        public Todo createFromParcel(Parcel in) {
-            return new Todo(in);
+        public Post createFromParcel(Parcel in) {
+            return new Post(in);
         }
 
         @Override
-        public Todo[] newArray(int size) {
-            return new Todo[size];
+        public Post[] newArray(int size) {
+            return new Post[size];
         }
     };
 
@@ -64,12 +64,10 @@ public class Todo implements Parcelable {
         this.title = title;
     }
 
-    public boolean isCompleted() {
-        return completed;
-    }
+    public String getBody() {return body; }
 
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
+    public void setBody(String body) {
+        this.body = body;
     }
 
     @Override
@@ -77,14 +75,11 @@ public class Todo implements Parcelable {
         return 0;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.userId);
         dest.writeInt(this.id);
         dest.writeString(this.title);
-        dest.writeBoolean(this.completed);
+        dest.writeString(this.body);
     }
-
-
 }

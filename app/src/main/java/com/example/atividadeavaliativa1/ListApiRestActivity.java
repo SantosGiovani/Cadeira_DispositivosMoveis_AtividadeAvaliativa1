@@ -1,13 +1,12 @@
 package com.example.atividadeavaliativa1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +16,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.atividadeavaliativa1.Adapter.AlbumAdapter;
+import com.example.atividadeavaliativa1.Adapter.ComentAdapter;
+import com.example.atividadeavaliativa1.Adapter.PhotoAdapter;
+import com.example.atividadeavaliativa1.Adapter.PostAdapter;
+import com.example.atividadeavaliativa1.Adapter.TodoAdapter;
+import com.example.atividadeavaliativa1.Model.Album;
+import com.example.atividadeavaliativa1.Model.Coment;
+import com.example.atividadeavaliativa1.Model.Photo;
+import com.example.atividadeavaliativa1.Model.Post;
+import com.example.atividadeavaliativa1.Model.Todo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,6 +46,12 @@ public class ListApiRestActivity extends AppCompatActivity
 
     private String url;
     private String typeclass;
+    private RecyclerView rv;
+    private TodoAdapter todoAdapter;
+    private AlbumAdapter albumAdapter;
+    private PhotoAdapter photoAdapter;
+    private PostAdapter postAdapter;
+    private ComentAdapter comentAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,9 +146,7 @@ public class ListApiRestActivity extends AppCompatActivity
 
             switch (typeclass){
                 case "TODO":
-                    //alert("Tamanho Todos: " + todos.size());
-
-                    LinearLayout llTodos = findViewById(R.id.layoutVerticalItens);
+                    /*LinearLayout llTodos = findViewById(R.id.layoutVerticalItens);
                     for(Todo obj1 : todos) {
                         Button bt = new Button(this);
                         bt.setText(obj1.getTitle());
@@ -149,13 +162,16 @@ public class ListApiRestActivity extends AppCompatActivity
                             }
                         });
                         llTodos.addView(bt);
-                    }
+                    }*/
+                    rv = findViewById(R.id.RecyclerViewListApi);
+                    rv.setLayoutManager(new LinearLayoutManager(this));
+
+                    todoAdapter = new TodoAdapter(todos, R.layout.layout_todo);
+                    rv.setAdapter(todoAdapter);
 
                     break;
                 case "POST":
-                    //alert("Tamanho Posts: " + posts.size());
-
-                    LinearLayout llPosts = findViewById(R.id.layoutVerticalItens);
+                    /*LinearLayout llPosts = findViewById(R.id.layoutVerticalItens);
                     for(Post obj1 : posts) {
                         Button bt = new Button(this);
                         bt.setText(obj1.getTitle());
@@ -171,12 +187,16 @@ public class ListApiRestActivity extends AppCompatActivity
                             }
                         });
                         llPosts.addView(bt);
-                    }
+                    }*/
+                    rv = findViewById(R.id.RecyclerViewListApi);
+                    rv.setLayoutManager(new LinearLayoutManager(this));
+
+                    postAdapter = new PostAdapter(posts, R.layout.layout_post);
+                    rv.setAdapter(postAdapter);
+
                     break;
                 case "COMENT":
-                    //alert("Tamanho coment: " + coments.size());
-
-                    LinearLayout llComent = findViewById(R.id.layoutVerticalItens);
+                    /*LinearLayout llComent = findViewById(R.id.layoutVerticalItens);
                     for(Coment obj1 : coments) {
                         Button bt = new Button(this);
                         bt.setText(obj1.getName());
@@ -192,12 +212,17 @@ public class ListApiRestActivity extends AppCompatActivity
                             }
                         });
                         llComent.addView(bt);
-                    }
+                    }*/
+
+                    rv = findViewById(R.id.RecyclerViewListApi);
+                    rv.setLayoutManager(new LinearLayoutManager(this));
+
+                    comentAdapter = new ComentAdapter(coments, R.layout.layout_coment);
+                    rv.setAdapter(comentAdapter);
+
                     break;
                 case "ALBUM":
-                    //alert("Tamanho albums: " + albums.size());
-
-                    LinearLayout llAlbum = findViewById(R.id.layoutVerticalItens);
+                    /*LinearLayout llAlbum = findViewById(R.id.layoutVerticalItens);
                     for(Album obj1 : albums) {
                         Button bt = new Button(this);
                         bt.setText(obj1.getTitle());
@@ -213,12 +238,16 @@ public class ListApiRestActivity extends AppCompatActivity
                             }
                         });
                         llAlbum.addView(bt);
-                    }
+                    }*/
+                    rv = findViewById(R.id.RecyclerViewListApi);
+                    rv.setLayoutManager(new LinearLayoutManager(this));
+
+                    albumAdapter = new AlbumAdapter(albums,R.layout.layout_album);
+                    rv.setAdapter(albumAdapter);
+
                     break;
                 case "PHOTO":
-                    //alert("Tamanho photos: " + photos.size());
-
-                    LinearLayout llphotos = findViewById(R.id.layoutVerticalItens);
+                    /*LinearLayout llphotos = findViewById(R.id.layoutVerticalItens);
                     for(Photo obj1 : photos) {
                         Button bt = new Button(this);
                         bt.setText(obj1.gettitle());
@@ -234,7 +263,13 @@ public class ListApiRestActivity extends AppCompatActivity
                             }
                         });
                         llphotos.addView(bt);
-                    }
+                    }*/
+
+                    rv = findViewById(R.id.RecyclerViewListApi);
+                    rv.setLayoutManager(new LinearLayoutManager(this));
+
+                    photoAdapter = new PhotoAdapter(photos, R.layout.layout_photo);
+                    rv.setAdapter(photoAdapter);
                     break;
                 default:
                     throw new IllegalStateException("Não foi possível exibir a lista.");

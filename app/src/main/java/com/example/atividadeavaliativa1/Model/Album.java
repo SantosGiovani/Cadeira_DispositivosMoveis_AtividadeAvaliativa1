@@ -1,4 +1,4 @@
-package com.example.atividadeavaliativa1;
+package com.example.atividadeavaliativa1.Model;
 
 import android.os.Build;
 import android.os.Parcel;
@@ -6,37 +6,34 @@ import android.os.Parcelable;
 
 import androidx.annotation.RequiresApi;
 
-public class Post implements Parcelable {
+public class Album implements Parcelable {
     private int userId;
     private int id;
     private String title;
-    private String body;
 
-    public Post(int userId, int id, String title){
+    public Album(int userId, int id, String title){
         this.userId = userId;
         this.id = id;
         this.title = title;
-        this.body = body;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
-    private Post(Parcel parcel) {
+    private Album(Parcel parcel) {
         this.userId = parcel.readInt();
         this.id = parcel.readInt();
         this.title = parcel.readString();
-        this.body = parcel.readString();
     }
 
-    public static final Parcelable.Creator<Post> CREATOR = new Parcelable.Creator<Post>() {
+    public static final Parcelable.Creator<Album> CREATOR = new Parcelable.Creator<Album>() {
         @RequiresApi(api = Build.VERSION_CODES.Q)
         @Override
-        public Post createFromParcel(Parcel in) {
-            return new Post(in);
+        public Album createFromParcel(Parcel in) {
+            return new Album(in);
         }
 
         @Override
-        public Post[] newArray(int size) {
-            return new Post[size];
+        public Album[] newArray(int size) {
+            return new Album[size];
         }
     };
 
@@ -64,12 +61,6 @@ public class Post implements Parcelable {
         this.title = title;
     }
 
-    public String getBody() {return body; }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -80,6 +71,5 @@ public class Post implements Parcelable {
         dest.writeInt(this.userId);
         dest.writeInt(this.id);
         dest.writeString(this.title);
-        dest.writeString(this.body);
     }
 }

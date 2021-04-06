@@ -19,16 +19,22 @@
             android:parentActivityName=".SelectListApiActivity" />
         <activity
             android:name=".SelectListApiActivity"
-            android:parentActivityName=".LoginActivity" />
-        <activity
-            android:name=".LoginActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity">
+            android:parentActivityName=".LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".MainActivity">
+<!--            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
         </activity>
     </application>
 

@@ -5,18 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import com.example.atividadeavaliativa1.Model.Album;
+import com.example.atividadeavaliativa1.Model.Coment;
+import com.example.atividadeavaliativa1.Model.Photo;
+import com.example.atividadeavaliativa1.Model.Post;
+import com.example.atividadeavaliativa1.Model.Todo;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 
 public class DetalheItemLisActivity extends AppCompatActivity {
 
@@ -105,14 +108,41 @@ public class DetalheItemLisActivity extends AppCompatActivity {
         tv = findViewById(R.id.textViewPhotoTitle);
         tv.setText(photo.gettitle());
 
+        String url = photo.getthumbnailUrl();
+        //new DownloadImageTask((ImageView) findViewById(R.id.imageViewPhoto)).execute(url);
+
 /*
         ImageView image = findViewById(R.id.imageViewPhoto);
 
-         String url = photo.getthumbnailUrl();
         InputStream inputStream = new java.net.URL(url).openStream();
         Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
         image.setImageBitmap(bitmap);*/
 
         //Glide.with(this).load(url).into(image);
+    }
+
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
+        }
     }
 }

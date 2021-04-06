@@ -1,4 +1,4 @@
-package com.example.atividadeavaliativa1;
+package com.example.atividadeavaliativa1.Model;
 
 import android.os.Build;
 import android.os.Parcel;

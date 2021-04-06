@@ -7,57 +7,42 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="@string/TitleDetail"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/textViewComentDetalhePostID"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="8dp" />
 
     <TextView
         android:id="@+id/textViewComentDetalheID"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewComentDetalhePostID" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewComentDetalhePostID"
+        tools:layout_editor_absoluteX="8dp" />
 
     <TextView
         android:id="@+id/textViewComentDetalheTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewComentDetalheID" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewComentDetalheID"
+        tools:layout_editor_absoluteX="8dp" />
 
     <TextView
         android:id="@+id/textViewComentDetalheBody"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewComentDetalheTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewComentDetalheTitle"
+        tools:layout_editor_absoluteX="8dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
